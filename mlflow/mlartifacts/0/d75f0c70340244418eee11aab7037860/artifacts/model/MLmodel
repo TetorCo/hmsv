@@ -1,0 +1,23 @@
+artifact_path: model
+flavors:
+  pmdarima:
+    code: null
+    data: model.pmd
+    model_type: ARIMA
+    pmdarima_version: 2.0.3
+  python_function:
+    data: model.pmd
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pmdarima
+    python_version: 3.11.5
+mlflow_version: 2.8.1
+model_size_bytes: 5509972
+model_uuid: b9091d1dfe6e432f8010ac7207c2efa1
+run_id: d75f0c70340244418eee11aab7037860
+signature:
+  inputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1]}}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1]}}]'
+  params: null
+utc_time_created: '2023-11-20 05:01:39.862020'

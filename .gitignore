@@ -1,0 +1,13 @@
+.env
+
+/airflow
+/static
+/templates
+/stockDividends
+/stockUS/rawData
+/stockUS/usAllCompany.json
+
+connect_s3.py
+func.py
+main.py
+crawling_stock_code.py

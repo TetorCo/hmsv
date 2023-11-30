@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<!--
+	Industrious by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>HMSV</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="static/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a class="logo" href="index.html"></a>
+				<nav>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="{{ url_for('mainPage') }}">Home</a></li>
+					<li><a href="{{ url_for('subPage') }}">Guide</a></li>
+					<li><a href="{{ url_for('subPage2') }}">Predict</a></li>
+				</ul>
+			</nav>
+
+		<!-- Heading -->
+			<div id="heading" >
+				<h1>Service Guide</h1>
+			</div>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+                <div class="inner">
+					<div class="content">
+                        <div class="row">
+                            <div class="col-6 col-12-medium">
+                                
+                                <h2>HMSV의 서비스에 대해서 설명해주세요.</h2>
+                                <p>HMSV는 DCF 가치평가를 고객분들께서 조금 더 사용하기 쉽게 만들어드리고 싶었습니다.</p>
+                                <p>DCF 가치평가의 단점이자 어려운 점은 직접 재무제표를 보면서 데이터를 입력해야하고, 미래의 기업의 성장률을 직접 예측해야 한다는 점입니다.</p>
+                                <p>HMSV는 시계열 분석 모델인 <b>Arima를 이용해서 기업의 미래 성장률을 예측함으로서 이러한 단점은 보완</b>했습니다.</p>
+
+                                <h2>DCF 가치평가는 무엇인가요?</h2>
+                                <p>DCF는 <b>Discounted Cash Flow(현금흐름할인법)</b>으로 회사가 미래에 영업을 통해서 벌어들일 수 있는 <b>순현금흐름을 현재 가치로 평가하는 방법</b>입니다.</p>
+                                
+                                <h2>Data는 어떻게 가져왔나요?</h2>
+                                <p>QuickFs에서 제공하는 API를 활용해서 가져왔습니다.</p>
+                                <p>해당 사이트에서 무료로 지난 10년간 재무제표를 보실 수 있지만, HMSV에서는 제출한 모든 연도의 재무제표를 활용합니다.</p>
+                                
+                            </div>
+                            <div class="col-6 col-12-medium">
+                                
+                                <h2>어떤 데이터를 모델링하나요?</h2>
+    
+                                <p>Arima 모델을 활용하는 데이터는 <b>매출액, 영업 현금 흐름, 유형 자산, 유지 자본 지출 비중</b> 총 4가지입니다.</p>
+    
+                                <p><b>매출액</b> : 기업이 사업에서 벌어들이는 이익입니다.</p>
+                                <p><b>유형 자산</b> : 재화‧용역의 생산이나 제공, 임대, 또는 관리활동에 사용할 목적으로
+                                    보유하는 물리적 형태가 있는 자산입니다.</p>
+                                <p><b>영업 현금 흐름</b> : 기업의 영업활동으로 발생하는 현금 흐름입니다.</p>
+                                <p><b>전체 자본 지출</b> : 기업의 사업에 필요한 자산을 구매하는데 쓰인 금액입니다.</p>
+                                
+                                <h2>서비스에서 사용할 수 있는 기업은 어떤 것이 있나요?</h2>
+                                <p>현재 NASDAQ에 상장된 주식들(4000+)을 사용할 수 있습니다.</p>
+                                <p>대표 주식으로는 <b>Apple, Amazon, Tesla, Microsoft</b>가 있습니다.</p>
+                                <p>단, 연간 재무제표를 제출하는 달이 2개 이상인 기업은 예측할 수 없습니다.</p>
+                                <p>예를 들어, 2021년에는 연간 재무제표 제출하는 달이 6월이고 2022년에는 12월인 기업은 제외했습니다.</p>
+                                <p>빠른 시간 내에 모든 기업들을 사용할 수 있게 업데이트 하겠습니다.</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner">
+                    <h1><b>Thank you for Reading!</b></h1>
+                </div>
+			</section>
+
+		<!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <div class="content">
+                    <section>
+                        <h3>개발자 말말말</h3>
+                        <p>개발자도 한 명의 투자자로서 주식으로 돈을 벌고 싶어 여러 명의 전문가 영상도 찾아보고 책도 읽었지만 쉽지 않았습니다.</p>
+                        <p>그리고 다른 사람이 추천하는 주식을 샀을 때 가격의 오르내림에 많이 신경도 쓰였고 이 주식을 가지고 있어야 하는지 확신이 없었습니다.</p>
+                        <p>스스로도 건강한 투자를 하고 싶어서 이 서비스를 제작한만큼 이용자 분들에게 주식을 고를 때 하나의 좋은 지표가 되었으면 하는 바람입니다.</p>
+                    </section>
+                    <!-- <section>
+                        <h4>Sem turpis amet semper</h4>
+                        <ul class="alt">
+                            <li><a href="#">Dolor pulvinar sed etiam.</a></li>
+                            <li><a href="#">Etiam vel lorem sed amet.</a></li>
+                            <li><a href="#">Felis enim feugiat viverra.</a></li>
+                            <li><a href="#">Dolor pulvinar magna etiam.</a></li>
+                        </ul>
+                    </section> -->
+                    <section>
+                        <h4>Developer Info</h4>
+                        <ul class="plain">
+                            <li><a href="https://github.com/TetorCo" target="_blank"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+                            <li><a href="https://www.linkedin.com/in/taebeomkim/" target="_blank"><i class="icon fa-linkedin-square" aria-hidden="true"></i>Linkdin</a></li>
+                            <li><a href="https://tetorco.tistory.com/" target="_blank"><i class="icon fa-bold" aria-hidden="true"></i>Tistory</a></li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </footer>
+
+    <div id="copyright " class="copyright">
+        Design by <a href="https://templated.co/">TEMPLATED</a>.
+    </div>
+
+    <!-- Scripts -->
+        <script src="static/js/jquery.min.js"></script>
+        <script src="static/js/browser.min.js"></script>
+        <script src="static/js/breakpoints.min.js"></script>
+        <script src="static/js/util.js"></script>
+        <script src="static/js/main.js"></script>
+	</body>
+</html>

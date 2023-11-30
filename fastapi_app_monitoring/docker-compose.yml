@@ -1,0 +1,74 @@
+version: "3.7"
+
+services:
+  web:
+    build: .
+    container_name: web
+    volumes:
+      - .:/code
+    ports:
+      - "5000:80"
+    environment:
+      - ENABLE_METRICS=true
+    command: ["wait-for-it", "rabbitmq:5672", "--", "uvicorn", "app.new_app:app", "--host", "0.0.0.0", "--port", "80"]
+    depends_on:
+      - rabbitmq
+      - postgres
+    networks:
+      - stock
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prom/config:/etc/prometheus
+      - ./prom/volume:/prometheus
+    ports:
+      - 9090:9090
+    command: # web.enalbe-lifecycle은 api 재시작없이 설정파일들을 reload 할 수 있게 해줌
+      - '--web.enable-lifecycle'
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    depends_on:
+      - web
+    networks:
+      - stock
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana/volume:/var/lib/grafana
+    depends_on:
+      - web
+      - prometheus
+    networks:
+      - stock
+
+  postgres:
+    image: postgres:13
+    container_name: postgres
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_HOST_AUTH_METHOD: 'trust'
+    depends_on:
+      - rabbitmq
+    networks:
+      - stock
+
+  rabbitmq:
+    image: rabbitmq:3.12-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - stock
+
+networks:
+  stock:

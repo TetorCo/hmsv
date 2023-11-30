@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/5735b804e75b448192d3fb857e20307c/artifacts
+end_time: 1700455967697
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 5735b804e75b448192d3fb857e20307c
+run_name: bemused-crow-919
+run_uuid: 5735b804e75b448192d3fb857e20307c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1700455959100
+status: 4
+tags: []
+user_id: taebeomkim
