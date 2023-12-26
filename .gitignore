@@ -1,5 +1,8 @@
 .env
 
+/__pycache__
+/.vscode
+
 /airflow
 /static
 /templates
@@ -11,3 +14,4 @@
 /func.py
 /main.py
 /crawling_stock_code.py
+/fastapi_app_monitoring/message_rabbit/celery_task.py

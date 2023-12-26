@@ -1,12 +1,12 @@
 import numpy as np
 import pandas as pd
-# import json
 import numpy_financial as npf
 
 import app.func
 import app.connect_s3
 import app.crawling_stock_code
 import message_rabbit.send
+import message_rabbit.company_name_check
 
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
@@ -117,7 +117,12 @@ class arima:
                     self.stock_price,
                     self.count_stock,
             )
-            message_rabbit.send.rabbitMQ(self.stock["data"]["metadata"]["name"],
+            ### DB Load Part
+            ## Company Code Check
+            company_id = message_rabbit.company_name_check.check(self.stock["data"]["metadata"]["symbol"])
+
+            ## Metrics Send
+            message_rabbit.send.rabbitMQ(company_id,
                 self.dr, self.tgr, self.mos, self.stock_price, self.count_stock,
                 model_result_data["company_value"], model_result_data["collect_stock"], model_result_data["safe_stock"], model_result_data["over_percent_stock"],
                 self.arima_model_aic)
