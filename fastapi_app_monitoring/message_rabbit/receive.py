@@ -38,7 +38,7 @@ class Company(Base):
     name = Column(String)
 
 class User(Base):
-    __tablename__ = 'user_info_metrics'
+    __tablename__ = 'user_input'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     company_id = Column(String, ForeignKey('company.id'))
@@ -46,18 +46,18 @@ class User(Base):
     tgr = Column(Integer)
     mos = Column(Integer)
     stock_price = Column(Integer)
-    count_stock = Column(Integer)
+    numbers_of_stocks = Column(Integer)
 
 class Model(Base):
-    __tablename__ = 'model_predict_metrics'
+    __tablename__ = 'model_out_put'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     company_id = Column(String, ForeignKey('company.id'))
     company_value = Column(Integer)
-    collect_stock = Column(Integer)
-    safe_stock = Column(Integer)
-    over_percent_stock = Column(Integer)
-    model_aic = Column(Integer)
+    fair_value = Column(Integer)
+    margin_of_safety = Column(Integer)
+    percentage_difference = Column(Integer)
+    aic = Column(Integer)
 
 # RabbitMQ 연결 설정
 connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbitmq_host))
@@ -76,7 +76,7 @@ def user_table(body):
         tgr = message['tgr'],
         mos = message['mos'],
         stock_price = message['stock_price'],
-        count_stock = message['count_stock']
+        numbers_of_stocks = message['numbers_of_stocks']
     )
 
     session.add(user_input_data)
@@ -89,10 +89,10 @@ def model_table(body):
     model_predict_data = Model(
         company_id = message['company_id'],
         company_value = message['company_value'],
-        collect_stock = message['collect_stock'],
-        safe_stock = message['safe_stock'],
-        over_percent_stock = message['over_percent_stock'],
-        model_aic = message['model_aic']
+        fair_value = message['fair_value'],
+        margin_of_safety = message['margin_of_safety'],
+        percentage_difference = message['percentage_difference'],
+        aic = message['aic']
     )
 
     session.add(model_predict_data)
