@@ -14,11 +14,6 @@ os.environ["AWS_ACCESS_KEY_ID"] = "{AWS_ACCESS_KEY_ID}"
 os.environ["AWS_SECRET_ACCESS_KEY"] = "{AWS_SECRET_ACCESS_KEY}"
 
 
-def calculate_cv_metrics(model, endog, metric, cv):
-    cv_metric = model_selection.cross_val_score(model, endog, cv=cv, scoring=metric, verbose=0)
-    return cv_metric[~np.isnan(cv_metric)].mean()
-
-
 with mlflow.start_run():
 
     ## Training Data Load
@@ -48,7 +43,7 @@ with mlflow.start_run():
     print("Model trained. \nExtracting parameters...")
     parameters = arima.get_params(deep=True)
 
-    metrics = {x: getattr(arima, x)() for x in ["aicc", "aic", "bic", "hqic", "oob"]}
+    metrics = {x: getattr(arima, x)() for x in ["aic"]}
 
     predictions = arima.predict(n_periods=30, return_conf_int=False)
 
