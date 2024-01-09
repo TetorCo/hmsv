@@ -21,7 +21,7 @@ def check(company_code):
     # print(result)
 
     if result == None:  ## 새로운 Company일 경우
-        insert_sql = f"INSERT INTO company(code) VALUES ('{company_code}') ;"
+        insert_sql = f"INSERT INTO company(code_name) VALUES ('{company_code}') ;"
         cursor.execute(insert_sql)
         conn.commit()
         print("Data Save")

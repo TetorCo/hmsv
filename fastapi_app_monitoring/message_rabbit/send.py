@@ -2,9 +2,9 @@ import pika
 import json
 
 def rabbitMQ(company_id,
-            dr, tgr, mos, stock_price, count_stock,
-            company_value, collect_stock, safe_stock, over_percent_stock,
-            model_aic):
+            dr, tgr, mos, stock_price, numbers_of_stocks,
+            company_value, fair_value, margin_of_safety, percentage_difference,
+            aic):
 
     ## RabbitMQ Setting
     rabbitmq_host = 'host.docker.internal'
@@ -28,17 +28,17 @@ def rabbitMQ(company_id,
         'tgr': tgr,
         'mos': mos,
         'stock_price': stock_price,
-        'count_stock': count_stock
+        'numbers_of_stocks': numbers_of_stocks
     }
 
     # Model Metrics Data
     model_data = {
         'company_id': company_id,
         'company_value': company_value,
-        'collect_stock': collect_stock,
-        'safe_stock': safe_stock,
-        'over_percent_stock': over_percent_stock,
-        'model_aic': model_aic
+        'fair_value': fair_value,
+        'margin_of_safety': margin_of_safety,
+        'percentage_difference': percentage_difference,
+        'aic': aic
     }
 
     # 데이터를 JSON 형태로 변환하여 RabbitMQ에 전송
