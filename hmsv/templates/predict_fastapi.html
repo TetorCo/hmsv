@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<!--
+	Industrious by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>HMSV</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="static/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a class="logo" href="index.html"></a>
+				<nav>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="{{ url_for('mainPage') }}">Home</a></li>
+					<li><a href="{{ url_for('subPage') }}">Guide</a></li>
+					<li><a href="{{ url_for('subPage2') }}">Predict</a></li>
+				</ul>
+			</nav>
+
+		<!-- Heading -->
+			<div id="heading" >
+				<h1>Stock Value</h1>
+			</div>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="inner">
+					<header class="special">
+						<h1><b>예측에 필요한 정보 입력</b></h1>
+						<h3>각 항목에 대한 설명은 아래에 있으니 각 항목을 잘 모르시는 분들은 참고 부탁드립니다.</h3>
+						<form method="post">
+							<div class="row gtr-uniform">
+								<div class="col-6 col-12-xsmall">
+									<input type="text" name="stockname" placeholder="Stock Name (주식 이름)" />
+								</div>
+								<div class="col-6 col-12-xsmall">
+									<input type="text" name="dr" placeholder="Discount Rate (할인율 == 목표 수익율)" />
+								</div>
+								<div class="col-6 col-12-xsmall">
+									<input type="text" name="tgr" placeholder="Terminal Growth Rate (영구 성장률)" />
+								</div>
+								<div class="col-6 col-12-xsmall">
+									<input type="text" name="mos" placeholder="Margin of Safety (안전 마진)" />
+								</div>
+								<div class="col-6 col-12-xsmall">
+									<input type="text" name="price" placeholder="현재 주식 가격" />
+								</div>
+								<div class="col-6 col-12-xsmall">
+									<input type="text" name="count" placeholder="기업의 총 주식 개수" />
+								</div>
+							</div>
+							<br>
+							<input type="submit" value="에측하기">
+							<h2>결과는 <b>30초 ~ 1분</b> 정도 소요됩니다!</h2>
+							<p>결과 페이지로 이동될 때 까지 조금만 기다려주세요!</p>
+						</form>
+					</header>
+					<h2><b>항목 별 설명</b></h2>
+
+					<h3><b>주식 이름</b></h3>
+					<p>예측하고자 하는 기업의 이름이나 주식 코드(apple = AAPL)를 입력합니다. 이름은 한/영 상관없습니다.</p>
+					<p>단, 기업의 이름을 정확히 입력해주세요. e.g. 애플 or apple</p>
+					
+					<h3><b>Discount Rate(할인율)</b></h3>
+					<p>할인율이란, 내가 해당 주식을 매수함으로써 기대하는 목표 수익률입니다.</p>
+					<p>미국 S&P 500 ETF의 연평균 수익률인 8~10%보다 더 많은 수익을 기대하는 경우 10~15%를 목표치로 설정합니다.</p>
+					
+					<h3><b>Discount Rate(영구 성장률)</b></h3>
+					<p>미래에도 해당 주식이 영구적으로 성장한다고 가정했을 때 연평균 성장률을 설정합니다.</p>
+					<p>보통 0~3%사이를 설정합니다.</p>
+					
+					<h3><b>Discount Rate(안전 마진)</b></h3>
+					<p>AI의 계산과 우리의 가정이 틀릴 가능성에 대비하기 위해서 설정합니다.</p>
+					<p>보통 0 ~ 50%사이를 설정합니다.</p>
+					<p>예를 들어, 해당 주식의 현재 가치가 $10이고 안전마진이 50%라면 최종 가치는 $5가 됩니다.</p>
+
+					<h3><b>현재 주식 가격</b></h3>
+					<p>예측하고자 하는 기업의 현재 주식 가격을 숫자로만 입력해주세요. e.g. 192, 67.75</p>
+
+					<h3><b>기업의 총 주식 개수</b></h3>
+					<p>현재 기업에서 발행했던 총 주식 개수를 입력합니다.</p>
+					<p><a href="https://www.investing.com/">investing.com</a>에서 기업을 입력하시면 쉽게 찾으실 수 있습니다. 추후에는 자동으로 가져올 수 있도록 업데이트 예정입니다.</p>
+				</div>
+			</section>
+
+		<!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <div class="content">
+					<section>
+						<h3>개발자 말말말</h3>
+						<p>개발자도 한 명의 투자자로서 주식으로 돈을 벌고 싶어 여러 명의 전문가 영상도 찾아보고 책도 읽었지만 쉽지 않았습니다.</p>
+						<p>그리고 다른 사람이 추천하는 주식을 샀을 때 가격의 오르내림에 많이 신경도 쓰였고 이 주식을 가지고 있어야 하는지 확신이 없었습니다.</p>
+						<p>스스로도 건강한 투자를 하고 싶어서 이 서비스를 제작한만큼 이용자 분들에게 주식을 고를 때 하나의 좋은 지표가 되었으면 하는 바람입니다.</p>
+					</section>
+                    <!-- <section>
+                        <h4>Sem turpis amet semper</h4>
+                        <ul class="alt">
+                            <li><a href="#">Dolor pulvinar sed etiam.</a></li>
+                            <li><a href="#">Etiam vel lorem sed amet.</a></li>
+                            <li><a href="#">Felis enim feugiat viverra.</a></li>
+                            <li><a href="#">Dolor pulvinar magna etiam.</a></li>
+                        </ul>
+                    </section> -->
+                    <section>
+                        <h4>Developer Info</h4>
+                        <ul class="plain">
+                            <li><a href="https://github.com/TetorCo" target="_blank"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+                            <li><a href="https://www.linkedin.com/in/taebeomkim/" target="_blank"><i class="icon fa-linkedin-square" aria-hidden="true"></i>Linkdin</a></li>
+                            <li><a href="https://tetorco.tistory.com/" target="_blank"><i class="icon fa-bold" aria-hidden="true"></i>Tistory</a></li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </footer>
+
+		<div id="copyright " class="copyright">
+			Design by <a href="https://templated.co/">TEMPLATED</a>.
+		</div>
+
+		<!-- Scripts
+			<script src="static/js/jquery.min.js"></script>
+			<script src="static/js/browser.min.js"></script>
+			<script src="static/js/breakpoints.min.js"></script>
+			<script src="static/js/util.js"></script>
+			<script src="static/js/main.js"></script>
+			<script>
+				function validate_form() {
+					// var stockName = document.getElementsByName('stock-name')[0].value;
+					var dr = document.getElementsByName('dr')[0].value;
+					var tgr = document.getElementsByName('tgr')[0].value;
+					var mos = document.getElementsByName('mos')[0].value;
+					var price = document.getElementsByName('price')[0].value;
+					var count = document.getElementsByName('count')[0].value;
+					
+					if (!isNumeric(dr) || !isNumeric(tgr) || !isNumeric(mos) || !isNumeric(price) || !isNumeric(count)) {
+						alert("입력한 데이터 중에 형식에 맞지 않는 데이터가 있습니다. 다시 한 번 확인해주세요!");
+						return false;
+					}
+					else return true;
+				}
+				function isNumeric(value) {
+					return !isNaN(parseFloat(value)) && isFinite(value);
+				}
+			</script> -->
+	</body>
+</html>
