@@ -5,7 +5,7 @@ Auto-Arima Model이 예측한 기업의 미래 10년 뒤 재무재표를 바탕�
 재무재표를 기반으로 해당 기업의 성장률을 예측하고, 현재 주가에 반영해서 주식을 구매할 때 나만의 여러 개의 가이드라인들 중 하나로 활용해 투기가 아닌 투자를 하기 위함
 
 ## 아키텍처
-![hmsv_archi](https://github.com/TetorCo/hmsv/assets/76984534/e1a708e9-e0b3-4491-9dd3-c603fbc279d3)
+
 
 ## 기술 스택
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
